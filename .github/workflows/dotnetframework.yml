@@ -55,6 +55,6 @@ jobs:
             ${{ env.PROJECT_NAME }}\bin\Release\Install service.ps1
             ${{ env.PROJECT_NAME }}\bin\Release\configuration.json
             ${{ env.PROJECT_NAME }}\bin\Release\NLog.config
-            ${{ env.PROJECT_NAME }}\bin\Release\archive.zip
+            ${{ env.PROJECT_NAME }}\archive.zip
           if-no-files-found: error
           
