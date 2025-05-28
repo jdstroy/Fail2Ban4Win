@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
   <Target Name="MyILRepack" AfterTargets="Build" Condition="$(Configuration.Contains('Release'))">
     <ItemGroup>
       <InputAssemblies Include="$(OutputPath)$(TargetName)$(TargetExt)" />
@@ -29,10 +30,11 @@
         <Files>$([System.IO.Directory]::GetFiles("%(Directories.Identity)", "*", System.IO.SearchOption.AllDirectories).get_Length())</Files>
       </Directories>
     </ItemGroup>
-    <Zip Files="@(ReferenceCopyLocalPaths->'$(OutDir)%(DestinationSubDirectory)%(Filename)%(Extension)')"
-          WorkingDirectory="$(OutputPath)"
-          ZipFileName="$(OutputPath)\archive.zip"
-          ZipLevel="9" />
 
   </Target>
+  <Target Name="ZipOutputPath" AfterTargets="MyILRepack">
+        <ZipDirectory
+            SourceDirectory="$(OutputPath)"
+            DestinationFile="$(MSBuildProjectDirectory)\archive.zip" />
+    </Target>
 </Project>
