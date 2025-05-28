@@ -39,7 +39,7 @@ jobs:
           exit 0
 
       - name: Upload test report
-        run: testspace Tests/TestResults/TestResults.xml
+        run: exit 0
 
       - name: Upload coverage
         uses: coverallsapp/github-action@648a8eb78e6d50909eff900e4ec85cab4524a45b
